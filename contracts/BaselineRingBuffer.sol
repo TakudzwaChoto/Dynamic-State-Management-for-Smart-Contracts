@@ -25,6 +25,7 @@ contract BaselineRingBuffer {
         Event[] memory result = new Event[](len);
         uint256 start = (head[user] + BUFFER_SIZE - len) % BUFFER_SIZE;
         for (uint256 i = 0; i < len; i++) {
+            result[i] = buffer[user][(start + i) % BUFFER_SIZE];
         }
         return result;
     }
